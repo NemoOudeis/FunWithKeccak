@@ -28,6 +28,7 @@ RcIncludePath          :=
 Libs                   := 
 ArLibs                 :=  
 LibPath                := $(LibraryPathSwitch). 
+MakeDirCommand         := mkdir -p
 
 ##
 ## Common variables
