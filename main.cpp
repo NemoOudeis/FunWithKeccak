@@ -101,17 +101,17 @@ void nmacExample( byte_vector &mac ) {
 	 * exactly R=1600-C bits per iteration that's why you hashed msg1 and msg2
 	 * to R bit hash values
 	 */
-	 KeccakSimpleCppInterface<N,C> Keccak2;
-	 Keccak2.restart();
-	 Keccak2.update(innerKey);
-	 Keccak2.update(url);
-	 byte_vector innerResult;
-	 Keccak2.finalize(innerResult);
+	KeccakSimpleCppInterface<N,C> Keccak2;
+	Keccak2.restart();
+	Keccak2.update(innerKey);
+	Keccak2.update(url);
+	byte_vector innerResult;
+	Keccak2.finalize(innerResult);
 
-	 Keccak2.restart();
-	 Keccak2.update(outerKey);
-	 Keccak2.update(innerResult);
-	 Keccak2.finalize(mac);
+	Keccak2.restart();
+	Keccak2.update(outerKey);
+	Keccak2.update(innerResult);
+	Keccak2.finalize(mac);
 }
 
 void keccakAsMacExample( byte_vector &mac ) {
@@ -131,15 +131,15 @@ void keccakAsMacExample( byte_vector &mac ) {
 	 * the Merkle-Damgard construction! Use Keccak to derive the key k this
 	 * time from msg3. Compute the mac again for url
 	 */
-	 byte_vector key;
-	 KeccakSimpleCppInterface<1600 - C,C> KeccakKeyer;
-	 KeccakKeyer.simpleHash(key, msg3);
+	byte_vector key;
+	KeccakSimpleCppInterface<1600 - C,C> KeccakKeyer;
+	KeccakKeyer.simpleHash(key, msg3);
 
-	 KeccakSimpleCppInterface<N,C> Keccak;
-	 Keccak.restart();
-	 Keccak.update(key);
-	 Keccak.update(url);
-	 Keccak.finalize(mac);
+	KeccakSimpleCppInterface<N,C> Keccak;
+	Keccak.restart();
+	Keccak.update(key);
+	Keccak.update(url);
+	Keccak.finalize(mac);
 }
  
 /*
