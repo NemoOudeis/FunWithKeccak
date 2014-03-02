@@ -131,10 +131,11 @@ void keccakAsMacExample( byte_vector &mac ) {
 	 * the Merkle-Damgard construction! Use Keccak to derive the key k this
 	 * time from msg3. Compute the mac again for url
 	 */
-	 KeccakSimpleCppInterface<N,C> Keccak;
 	 byte_vector key;
-	 Keccak.simpleHash(key, msg3);
+	 KeccakSimpleCppInterface<1600 - C,C> KeccakKeyer;
+	 KeccakKeyer.simpleHash(key, msg3);
 
+	 KeccakSimpleCppInterface<N,C> Keccak;
 	 Keccak.restart();
 	 Keccak.update(key);
 	 Keccak.update(url);
